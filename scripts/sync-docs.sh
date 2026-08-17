@@ -60,4 +60,4 @@ echo "== 4. 部署到 Vercel Production =="
 vercel --prod
 
 echo ""
-echo "完成：https://dx-hub-six.vercel.app/n8n-handbook"
+echo "完成：https://dx-ops.vercel.app/n8n-handbook"

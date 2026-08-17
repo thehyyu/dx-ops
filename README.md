@@ -2,7 +2,7 @@
 
 數位轉型組的內部資源入口，跟個人部落格（EchoForge）完全分開，獨立網域、獨立 repo。
 
-- 正式網址：https://dx-hub-six.vercel.app
+- 正式網址：https://dx-ops.vercel.app
 - 目前內容：`/n8n-handbook`（n8n 組內操作手冊，Docsify 靜態站）
 - 存取方式：共用密碼閘門（不是 Google 帳號登入），密碼存在 Vercel 環境變數 `N8N_HANDBOOK_PASSWORD`
 
