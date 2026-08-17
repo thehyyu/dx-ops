@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "DX Hub",
+  title: "DX Ops",
   description: "數位轉型組內部資源入口",
 };
 

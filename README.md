@@ -1,4 +1,4 @@
-# DX Hub
+# DX Ops
 
 數位轉型組的內部資源入口，跟個人部落格（EchoForge）完全分開，獨立網域、獨立 repo。
 
@@ -17,7 +17,7 @@ Obsidian 資料夾（源頭，真正編輯文件的地方）
    ├──→ Tailscale (:3000)：nginx 直接讀這個資料夾，存檔即生效
    │      （備份用的 git repo：git@github.com:thehyyu/n8n-handbook.git）
    │
-   └──→ dx-hub（這個 repo）：public/n8n-handbook/ 是複製過去的一份
+   └──→ dx-ops（這個 repo）：public/n8n-handbook/ 是複製過去的一份
           proxy.ts 攔截 /n8n-handbook 底下所有請求，沒帶對的 cookie
           就導去 /n8n-handbook-login，密碼跟 process.env.N8N_HANDBOOK_PASSWORD 比對
 ```
@@ -28,10 +28,10 @@ Obsidian 資料夾（源頭，真正編輯文件的地方）
 
 ## 文件更新流程
 
-改完 Obsidian 資料夾裡的文件之後（Tailscale `:3000` 這步就已經生效了，不用再做什麼），要讓 `dx-hub` 這邊的公開版也跟上，執行：
+改完 Obsidian 資料夾裡的文件之後（Tailscale `:3000` 這步就已經生效了，不用再做什麼），要讓 `dx-ops` 這邊的公開版也跟上，執行：
 
 ```bash
-cd ~/Documents/dx-hub
+cd ~/Documents/dx-ops
 ./scripts/sync-docs.sh
 ```
 
@@ -39,7 +39,7 @@ cd ~/Documents/dx-hub
 
 1. 把源頭資料夾的改動 `commit + push` 到 `n8n-handbook` repo（純備份）
 2. 用 `rsync` 把最新內容複製到 `public/n8n-handbook/`
-3. 這裡的改動 `commit + push` 到 `dx-hub` repo
+3. 這裡的改動 `commit + push` 到 `dx-ops` repo
 4. **只有內容真的有變動**，才跑 `vercel --prod` 重新部署——沒有變動的話會在對應步驟自動跳過，不會每次都硬重新部署
 
 想自訂 commit 訊息：
