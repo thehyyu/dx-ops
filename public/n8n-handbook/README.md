@@ -37,5 +37,7 @@
 | 項目 | 網址 |
 |---|---|
 | n8n | http://100.87.135.94:5678 |
-| 本文件 | http://100.87.135.94:3000 |
-| 本文件原始碼（GitHub） | https://github.com/thehyyu/n8n-handbook |
+| 本文件（需要 Tailscale） | http://100.87.135.94:3000 |
+| 本文件（不需要 Tailscale，需密碼） | https://dx-ops.vercel.app/n8n-handbook |
+| 本文件原始碼（GitHub，跟 Tailscale 版同步） | https://github.com/thehyyu/n8n-handbook |
+| 公開版原始碼（GitHub，dx-ops） | https://github.com/thehyyu/dx-ops |
