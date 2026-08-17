@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export function proxy(req: NextRequest) {
+export default function proxy(req: NextRequest) {
   // protect /n8n-handbook — simple shared-password gate
   const token = req.cookies.get("n8n_handbook_auth")?.value;
   if (!token || token !== process.env.N8N_HANDBOOK_PASSWORD) {
@@ -11,6 +11,6 @@ export function proxy(req: NextRequest) {
   return NextResponse.next();
 }
 
-export const proxyConfig = {
+export const config = {
   matcher: ["/n8n-handbook", "/n8n-handbook/:path*"],
 };
