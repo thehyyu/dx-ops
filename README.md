@@ -41,6 +41,7 @@ cd ~/Documents/dx-ops
 2. 用 `rsync` 把最新內容複製到 `public/n8n-handbook/`
 3. 這裡的改動 `commit + push` 到 `dx-ops` repo
 4. **只有內容真的有變動**，才跑 `vercel --prod` 重新部署——沒有變動的話會在對應步驟自動跳過，不會每次都硬重新部署
+5. 部署完，把 `dx-ops.vercel.app` 這個網址重新指向剛剛部署好的版本（見下方「已知問題」，這步不能省）
 
 想自訂 commit 訊息：
 
@@ -79,4 +80,14 @@ npm run dev
 
 ```bash
 vercel --prod
+# 部署完一定要接著把網址指回來，見下方「已知問題」
+vercel alias set <這次印出來的 deployment 網址> dx-ops.vercel.app
 ```
+
+---
+
+## 已知問題：`vercel --prod` 不會自動更新 dx-ops.vercel.app
+
+這個專案原本叫 `dx-hub`，後來改名成 `dx-ops`（`vercel project rename`）。改名不會把 Vercel 自動配的 production 別名一起改過來——`vercel --prod` 每次還是會自動把舊名字（`dx-hub-six.vercel.app`）重新指到最新部署，`dx-ops.vercel.app` 是我們手動 `vercel alias set` 上去的，**不會自動跟著新部署走**。
+
+`sync-docs.sh` 已經處理這件事（部署完會自動抓部署網址、重新 alias 一次），但如果用「手動部署」那條路（直接跑 `vercel --prod`），記得自己補一次 `vercel alias set`，不然網址會停在上一個版本。

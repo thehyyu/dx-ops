@@ -57,7 +57,17 @@ fi
 
 echo ""
 echo "== 4. 部署到 Vercel Production =="
-vercel --prod
+DEPLOY_URL=$(vercel --prod 2>&1 | tee /dev/stderr | grep -o 'https://dx-[a-z0-9]*-thehyyus-projects\.vercel\.app' | tail -1)
+
+echo ""
+echo "== 5. 把 dx-ops.vercel.app 指向這次的部署 =="
+# Vercel 專案改名後，自動 alias 會回退成建立時期的舊名字（dx-hub-six），
+# 不會自動跟著新部署走，每次都要手動指回來，見 README「已知問題」段落。
+if [[ -n "$DEPLOY_URL" ]]; then
+  vercel alias set "$DEPLOY_URL" dx-ops.vercel.app
+else
+  echo "⚠️ 沒抓到這次的部署網址，請手動執行：vercel alias set <deployment-url> dx-ops.vercel.app" >&2
+fi
 
 echo ""
 echo "完成：https://dx-ops.vercel.app/n8n-handbook"
