@@ -10,7 +10,7 @@
 
 set -euo pipefail
 
-SRC="/Users/thehyyu/Documents/Obsidian/LLM Wiki/Project/n8n組內操作手冊"
+SRC="/Users/thehyyu/Documents/Obsidian/LLM Wiki22/Project/n8n組內操作手冊"
 DX_OPS="/Users/thehyyu/Documents/dx-ops"
 DEST="$DX_OPS/public/n8n-handbook"
 MSG="${1:-docs: sync $(date '+%Y-%m-%d %H:%M')}"
